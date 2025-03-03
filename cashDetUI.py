@@ -8,6 +8,8 @@ while(True):
     
         frame = cv2.resize(frame,(640, 480)) #resize frame
 
+        cv2.putText(frame, 'Bill Label Output', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
+
         cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
 
         if cv2.waitKey(1) & 0xFF ==ord('e'): #press 'e' to exit program application
