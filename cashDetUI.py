@@ -1,4 +1,9 @@
 import cv2 #Need to 'pip install opencv-python' to use cv2, for video output
+from ultralytics import YOLO #Used for live object detection
+
+best_model = 'best.pt' #brings best.pt model into program
+cash_model = YOLO(best_model, task='detect') #loads the YOLO model
+cash_labels = cash_model.names #gets cash labels ex. '1-front', '5-back'
 
 cap = cv2.VideoCapture(0) #initializes video capture, '0' chooses default camera
 
@@ -7,6 +12,8 @@ while(True):
     if(ret):
     
         frame = cv2.resize(frame,(640, 480)) #resize frame
+
+        results = cash_model(frame) #runs object detection on live frames
 
         cv2.putText(frame, 'Bill Label Output', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
 
