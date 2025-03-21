@@ -13,7 +13,7 @@ while(True):
     
         frame = cv2.resize(frame,(640, 480)) #resize frame
 
-        results = cash_model(frame) #runs object detection on live frames
+        results = cash_model(frame, verbose=False) #runs object detection on live frames, verbose=False eliminates live text output in console
 
         cv2.putText(frame, 'Bill Label Output', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
 
