@@ -14,13 +14,14 @@ while(True):
         frame = cv2.resize(frame,(640, 480)) #resize frame
 
         results = cash_model(frame, verbose=False) #runs object detection on live frames, verbose=False eliminates live text output in console
+        live_results = results[0].boxes #pulls the detected object's info
 
         cv2.putText(frame, 'Bill Label Output', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
 
-        cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
+    cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
 
-        if cv2.waitKey(1) & 0xFF ==ord('e'): #press 'e' to exit program application
-            break
+    if cv2.waitKey(1) & 0xFF ==ord('e'): #press 'e' to exit program application
+        break
 
 print('Still working :)') #print confirmation that the code exited properly, remove this before final submission
 cap.release() #makes sure camera does not stay on after exiting code
