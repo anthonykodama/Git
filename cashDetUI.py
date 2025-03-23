@@ -15,8 +15,15 @@ while(True):
 
         results = cash_model(frame, verbose=False) #runs object detection on live frames, verbose=False eliminates live text output in console
         live_results = results[0].boxes #pulls the detected object's info
+    
+    if len(live_results) > 0: #if a cash object is detected the following code will proceed
 
-        cv2.putText(frame, 'Bill Label Output', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
+        first_detection = live_results[0] #selects the first detection from the array of detections from live_results
+
+        class_id = first_detection.cls.item() #assigns class ID from identified object and converts to int value
+        class_name = cash_labels[class_id] #assigns cash label from the identified class ID
+
+        cv2.putText(frame, class_name, (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
 
     cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
 
