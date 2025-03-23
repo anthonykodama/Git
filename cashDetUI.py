@@ -23,7 +23,9 @@ while(True):
         class_id = first_detection.cls.item() #assigns class ID from identified object and converts to int value
         class_name = cash_labels[class_id] #assigns cash label from the identified class ID
 
-        cv2.putText(frame, class_name, (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
+        conf_score = first_detection.conf.item() #gets confidence score and converts to float value
+
+        cv2.putText(frame, f'{class_name} {conf_score}', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
 
     cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
 
