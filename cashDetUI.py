@@ -1,11 +1,17 @@
 import cv2 #Need to 'pip install opencv-python' to use cv2, for video output
 from ultralytics import YOLO #Used for live object detection
+import pyttsx3 #Text to speech library, need to 'pip install pyttsx3' to be used
 
 best_model = 'best.pt' #brings best.pt model into program
 cash_model = YOLO(best_model, task='detect') #loads the YOLO model
 cash_labels = cash_model.names #gets cash labels ex. '1-front', '5-back'
 
 cap = cv2.VideoCapture(0) #initializes video capture, '0' chooses default camera
+
+def speak(command):
+    engine = pyttsx3.init() #initializes text to speech for text output
+    engine.say(command) #the text to speech will say whatever the 'command' string is assigned
+    engine.runAndWait() #runs the 'speak' function
 
 while(True):
     ret, frame = cap.read()
@@ -26,6 +32,7 @@ while(True):
         conf_score = first_detection.conf.item() #gets confidence score and converts to float value
 
         cv2.putText(frame, f'{class_name} {conf_score}', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
+        speak(class_name) #runs 'speak' function with 'class_name' as the input
 
     cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
 
