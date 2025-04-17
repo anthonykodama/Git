@@ -32,7 +32,8 @@ while(True):
         conf_score = first_detection.conf.item() #gets confidence score and converts to float value
 
         if (conf_score) > 0.8: #Only provides text/speech output when confidence score is greater than 0.8
-            cv2.putText(frame, f'{class_name} {conf_score}', (150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2) #Bill label output
+            cv2.putText(frame, f'Value: ${class_name} Accuracy: {round(conf_score * 100):02}%', (30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,0), 4) #Bill label output black Outline
+            cv2.putText(frame, f'Value: ${class_name} Accuracy: {round(conf_score * 100):02}%', (30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1) #Bill label output
             speak(class_name) #runs 'speak' function with 'class_name' as the input
 
     cv2.imshow('Cash Bill Detection Application',frame) #Displays frame with label
