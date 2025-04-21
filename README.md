@@ -3,7 +3,7 @@ This project is the creation of a cash bill object detection system that is desi
 There are two major portions to this project which consist of training an object detection model and implementing the trained object detection model into a desktop program.
 ## Cash Object Detection Model Implementation
 ### 1. Implementation Requirements
-Anaconda (Virtual Environment)  
+Anaconda (to create a virtual environment)  
 Visual Studio Code (Python 3.12)
 ### 2. Implementation Installation
 ultralytics - Used for live object detection   
@@ -13,9 +13,28 @@ Copy the code (cashDetUI.py) into vsCode python file
 Download the trained model (best.pt) and put it in the same folder as the code
 ### 3. Implementation Usage
 #### In Anaconda Command Prompt:
-Create Virtual Environment '''conda create --name cash_detect_env python=3.12'''  
-ultralytics '''pip install ultralytics'''   
-cv2 '''pip install opencv-python'''  
-pyttsx3 '''pip install pyttsx3'''  
-Run the code '''python cashDetUI.py'''  
+Create Virtual Environment 
+```
+  conda create --name cash_detect_env python=3.12
+```  
+Activate Virtual Environment
+```
+conda activate cash_detect_env
+```
+install ultralytics 
+```
+pip install ultralytics
+```   
+install cv2 
+```
+pip install opencv-python
+```  
+install pyttsx3 
+```
+pip install pyttsx3
+```  
+Run the code 
+```
+python cashDetUI.py
+```
 Press 'e' to exit the application
