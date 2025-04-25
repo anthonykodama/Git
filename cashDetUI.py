@@ -41,6 +41,5 @@ while(True):
     if cv2.waitKey(1) & 0xFF ==ord('e'): #press 'e' to exit program application
         break
 
-print('Still working :)') #print confirmation that the code exited properly, remove this before final submission
 cap.release() #makes sure camera does not stay on after exiting code
 cv2.destroyAllWindows() #makes sure all cv2 related systems are stopped
